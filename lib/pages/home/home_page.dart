@@ -1,7 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:travel_app/components/firstcarwidget.dart';
+import 'package:travel_app/components/secondwidget.dart';
+import 'package:travel_app/components/thirdwidget.dart';
+import 'package:travel_app/models/first_card.dart';
+import 'package:travel_app/models/listcard.dart';
+import 'package:travel_app/models/listcard.dart';
+import 'package:travel_app/models/listcard.dart';
+import 'package:travel_app/models/listcard.dart';
+import 'package:travel_app/models/listcard.dart';
+import 'package:travel_app/models/second_card.dart';
+
 
 class HomePage extends StatefulWidget {
+
+
   const HomePage({super.key});
 
   @override
@@ -10,6 +23,22 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
 
+  late PageController _controller;
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    _controller.dispose();
+  }
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _controller = PageController();
+  }
+
+
   int currentIndex = 0;
   void onTap(int index){
 
@@ -17,6 +46,92 @@ class _HomePageState extends State<HomePage> {
       currentIndex = index;
     });
   }
+
+
+   List<FirstCard> Cards = [
+    FirstCard(
+      name: 'Apanemo Resort',
+      location: 'East Evritania',
+      rating: 4.9,
+      price: '\$90/Night',
+      image: "assets/cardimages/img.png",
+      icon: Icons.account_balance_outlined,
+    ),
+    FirstCard(
+      name: 'Laguna Resort',
+      location: 'Santorini',
+      rating: 4.7,
+      price: '\$110/Night',
+      image: "assets/cardimages/img_1.png",
+      icon: Icons.home_outlined,
+    ),
+    FirstCard(
+      name: 'Ocean Breeze',
+      location: 'Bali, Indonesia',
+      rating: 4.8,
+      price: '\$75/Night',
+      image: "assets/cardimages/img_2.png",
+      icon: Icons.forest_outlined,
+    ),
+  ];
+
+   List<SecondCard> popularItems = [
+    SecondCard(
+      image: "assets/cardimages/img2_1.png",
+      title: 'The Blue House',
+      subtitle: '2 days 3 night full package',
+      rating: 4.8,
+    ),
+    SecondCard(
+      image: "assets/cardimages/img2_2.png",
+      title: 'Mountain Retreat',
+      subtitle: '3 days 4 night adventure',
+      rating: 4.6,
+    ),
+    SecondCard(
+      image: "assets/cardimages/img2_3.png",
+      title: 'Dubai',
+      subtitle: '5 days 6 night luxury stay',
+      rating: 4.9,
+    ),
+  ];
+
+  List<Listcard> ListPackages =  [
+    Listcard(
+      name: 'Imperial Luxury Hotel',
+      location: 'Queensland',
+      price: '\$120/Night',
+      rating: 4.9,
+      reviews: '7.2K Reviews',
+      image: "assets/cardimages/listimage/img.png",
+    ),
+    Listcard(
+      name: 'Walkabout Beach Hotel',
+      location: 'New Zealand',
+      price: '\$100/Night',
+      rating: 4.8,
+      reviews: '6.4K Reviews',
+      image: "assets/cardimages/listimage/img_1.png",
+    ),
+    Listcard(
+      name: 'Antlers Hilton Resort',
+      location: 'Singapore',
+      price: '\$100/Night',
+      rating: 4.6,
+      reviews: '3.9K Reviews',
+      image: "assets/cardimages/listimage/img_2.png",
+    ),
+    Listcard(
+      name: 'Imperial Luxury Hotel',
+      location: 'Queensland',
+      price: '\$120/Night',
+      rating: 4.9,
+      reviews: '7.2K Reviews',
+      image: "assets/cardimages/listimage/img_3.png",
+    ),
+  ];
+
+   int currentpage = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -64,7 +179,7 @@ class _HomePageState extends State<HomePage> {
                   padding: const EdgeInsets.only(bottom: 10),
                   child: Text(
                     "Explore the\nBeautiful World",
-                    style: GoogleFonts.openSans( // elmsSans o'rniga openSans
+                    style: GoogleFonts.ubuntu( // elmsSans o'rniga openSans
                       fontWeight: FontWeight.bold,
                       fontSize: 35,
                     ),
@@ -83,7 +198,7 @@ class _HomePageState extends State<HomePage> {
           // Horizontal ListView qismi
           SliverToBoxAdapter(
             child: SizedBox(
-              height: 130, // XATO TUZATILDI: Horizontal listga balandlik berish shart!
+              height: 160, // XATO TUZATILDI: Horizontal listga balandlik berish shart!
               child: ListView.builder(
                 itemCount: 4,
                 scrollDirection: Axis.horizontal,
@@ -93,10 +208,11 @@ class _HomePageState extends State<HomePage> {
                     onTap: ()=>onTap(index),
                     child: Column(
                       crossAxisAlignment: .center,
+                      mainAxisSize: .min,
                       children: [
                         Container(
                           width: 80,
-                          height: 80,
+                          height: 85,
                           padding: EdgeInsets.all(20),
                           margin: const EdgeInsets.only(right: 15),
                           decoration: BoxDecoration(
@@ -119,11 +235,94 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
           ),
-
-          // Pastda kontent ko'rinishi uchun bo'sh joy
           SliverToBoxAdapter(
-            child: Container(height: 500, color: Colors.transparent),
-          )
+            child: Container(
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(20, 16, 20, 12),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Text('122 Packages', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700)),
+                    Text('See All', style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600, color: const Color(0xFF6366F1))),
+                  ],
+                ),
+              ),
+            ),
+          ),
+          SliverToBoxAdapter(
+            child:SizedBox(
+              height: 270,
+              child: ListView.separated(
+                scrollDirection: Axis.horizontal,
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                itemCount: Cards.length,
+                separatorBuilder: (_, __) => const SizedBox(width: 14),
+                itemBuilder: (context, i) => FirstCardWidget(card: Cards[i]),
+              ),
+            ),
+          ),
+          SliverToBoxAdapter(
+            child: SizedBox(height: 15,),
+          ),
+          SliverToBoxAdapter(
+            child: Container(
+              child: const Padding(
+                padding: EdgeInsets.fromLTRB(20, 20, 20, 12),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text('Popular Packages', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700)),
+                    Text('See All', style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600, color: Color(0xFF6366F1))),
+                  ],
+                ),
+              ),
+            ),
+          ),
+          SliverToBoxAdapter(
+            child: SizedBox(height: 15,),
+          ),
+          SliverToBoxAdapter(
+            child: SizedBox(
+              height: 210,
+              child: PageView.builder(
+                  physics: const PageScrollPhysics(),
+                controller: _controller,
+                  itemCount: popularItems.length,
+                  onPageChanged: (index) {
+                  setState(() {
+                    currentpage = index;
+                  });
+                  },
+                  itemBuilder: (context,index){
+                    return Padding(
+                        padding:EdgeInsets.symmetric(horizontal: 20),
+                        child: SecondWidget(item: popularItems[index]),
+                    );
+                  }),
+            ),
+          ),
+          SliverToBoxAdapter(
+            child: SizedBox(height: 15,),
+          ),
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: EdgeInsets.fromLTRB(20, 8, 20, 12),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text('Top Packages', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700)),
+                  Text('See All', style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600, color: Color(0xFF6366F1))),
+                ],
+              ),
+            ),
+          ),
+          SliverList(
+            delegate: SliverChildBuilderDelegate(
+                  (context, i) => ThirdWidget(package: ListPackages[i]),
+              childCount: ListPackages.length,
+            ),
+          ),
+
         ],
       ),
     );
