@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:travel_app/pages/home/popular_ontap.dart';
 import 'package:travel_app/pages/home/popular_package_details_page.dart';
 import 'package:travel_app/pages/main_page.dart';
 import 'package:travel_app/pages/register/onboarding_page.dart';
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: PopularPackageDetailsPage(),
+      home: TravelDetailsPage(),
     );
   }
 }
