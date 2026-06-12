@@ -48,6 +48,14 @@ class _HomePageState extends State<HomePage> {
   }
 
 
+  List<Map<String, String>> chips = [
+    {"image":"assets/images/img_3.png","text":"Packages"},
+    {"image":"assets/images/img_4.png","text":"Flight"},
+    {"image":"assets/images/img_5.png","text":"Places"},
+    {"image":"assets/images/img_6.png","text":"Hotel"},
+  ];
+
+
    List<FirstCard> Cards = [
     FirstCard(
       name: 'Apanemo Resort',
@@ -136,15 +144,16 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xfff6f4f4),
       body: CustomScrollView(
         slivers: [
-          SliverPadding(
-            padding: const EdgeInsets.all(20),
-            sliver: SliverAppBar(
+          SliverAppBar(
+              backgroundColor: Color(0xfff6f4f4),
               pinned: true,
               expandedHeight: 150,
               leading: Center(
                 child: Container(
+                  margin: EdgeInsets.only(left: 20),
                   width: 40,
                   height: 40,
                   decoration: BoxDecoration(
@@ -172,11 +181,12 @@ class _HomePageState extends State<HomePage> {
                     icon: const Icon(Icons.apps),
                   ),
                 ),
+                SizedBox(width: 20,)
               ],
               flexibleSpace: FlexibleSpaceBar(
                 background: Container(
                   alignment: Alignment.bottomLeft,
-                  padding: const EdgeInsets.only(bottom: 10),
+                  padding: const EdgeInsets.only(bottom: 10,left: 20),
                   child: Text(
                     "Explore the\nBeautiful World",
                     style: GoogleFonts.ubuntu( // elmsSans o'rniga openSans
@@ -187,7 +197,6 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
             ),
-          ),
 
           // Qidiruv qismi (Header)
           SliverPersistentHeader(
@@ -200,10 +209,11 @@ class _HomePageState extends State<HomePage> {
             child: SizedBox(
               height: 160, // XATO TUZATILDI: Horizontal listga balandlik berish shart!
               child: ListView.builder(
-                itemCount: 4,
+                itemCount: chips.length,
                 scrollDirection: Axis.horizontal,
                 padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                 itemBuilder: (context, index) {
+                  var map = chips[index];
                   return GestureDetector(
                     onTap: ()=>onTap(index),
                     child: Column(
@@ -223,11 +233,11 @@ class _HomePageState extends State<HomePage> {
                           ),
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(15),
-                            child: Image.asset("assets/images/img_3.png", fit: BoxFit.cover),
+                            child: Image.asset(map['image']!, fit: BoxFit.cover),
                           ),
                         ),
                         SizedBox(height: 10,),
-                        Text("Packages",style: TextStyle(color: currentIndex==index?Colors.blue:Colors.black),)
+                        Text(map['text']!,style: TextStyle(color: currentIndex==index?Colors.blue:Colors.black),)
                       ],
                     ),
                   );
