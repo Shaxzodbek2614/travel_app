@@ -12,7 +12,7 @@ class TravelDetailsPage extends StatelessWidget {
           SizedBox(
             height: 350,
             width: double.infinity,
-            child: Image.asset("assets/images/img_6.png", fit: BoxFit.cover),
+            child: Image.asset("assets/cardimages/img2_1.png", fit: BoxFit.cover),
           ),
           SingleChildScrollView(
             child: Column(
