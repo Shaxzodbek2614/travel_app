@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:travel_app/themes/app_colors.dart';
 
 class BuildSignInButton extends StatelessWidget {
   IconData? icon;
@@ -21,7 +22,7 @@ class BuildSignInButton extends StatelessWidget {
       width: 110,
       height: 70,
       decoration: BoxDecoration(
-        border: BoxBorder.all(width: 2, color: Colors.grey),
+        border: BoxBorder.all(width: 2, color: AppColors.of(context).textColor),
         borderRadius: .circular(35),
       ),
       child: icon != null

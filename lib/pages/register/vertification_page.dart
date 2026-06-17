@@ -4,6 +4,7 @@ import 'package:flutter_otp_kit/flutter_otp_kit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sms_autofill/sms_autofill.dart';
 import 'package:travel_app/pages/register/set_new_password_page.dart';
+import 'package:travel_app/themes/app_colors.dart';
 
 class VertificationPage extends StatefulWidget {
   String type;
@@ -19,14 +20,14 @@ class _VertificationPageState extends State<VertificationPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: AppColors.of(context).backgroundColor,
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: AppColors.of(context).backgroundColor,
         title: Text(
           "Verification",
           style: GoogleFonts.elmsSans(
             fontWeight: FontWeight.bold,
-            color: Colors.black,
+            color: AppColors.of(context).titleColor,
           ),
         ),
         centerTitle: true,
@@ -44,7 +45,7 @@ class _VertificationPageState extends State<VertificationPage> {
                   "TRALTO",
                   style: GoogleFonts.elmsSans(
                     fontSize: 22,
-                    color: Colors.black,
+                    color: AppColors.of(context).titleColor,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -57,7 +58,7 @@ class _VertificationPageState extends State<VertificationPage> {
             ),
             Text(
               "*****${widget.email.substring(6)}",
-              style: TextStyle(color: Colors.black),
+              style: TextStyle(color: AppColors.of(context).titleColor),
             ),
             SizedBox(height: 30,),
             OtpKit(

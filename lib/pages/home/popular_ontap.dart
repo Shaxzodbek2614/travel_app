@@ -1,5 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+
+import '../../components/calendar_widjet.dart';
 
 class TravelDetailsPage extends StatelessWidget {
   const TravelDetailsPage({super.key});
@@ -173,7 +176,124 @@ class TravelDetailsPage extends StatelessWidget {
                             Spacer(),
 
                             GestureDetector(
-                              onTap: (){
+                              onTap: () {
+                                showModalBottomSheet(
+                                  isScrollControlled: true,
+                                  context: (context),
+                                  builder: (context) {
+                                    return Container(
+                                      padding: EdgeInsets.all(20),
+                                      width: double.infinity,
+                                      height: 700,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.only(
+                                          topRight: Radius.circular(30),
+                                          topLeft: Radius.circular(30),
+                                        ),
+                                        color: Colors.white,
+                                      ),
+                                      child: Column(
+                                        children: [
+                                          Row(
+                                            children: [
+                                              GestureDetector(
+                                                onTap: () {
+                                                  Navigator.pop(context);
+                                                },
+                                                child: Container(
+                                                  height: 40,
+                                                  width: 40,
+                                                  decoration: BoxDecoration(
+                                                    border: Border.all(
+                                                      color:
+                                                          Colors.grey.shade300,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                          12,
+                                                        ),
+                                                  ),
+                                                  child: const Icon(
+                                                    Icons.close,
+                                                  ),
+                                                ),
+                                              ),
+                                              Spacer(),
+                                              Text(
+                                                "Flight Details",
+                                                style: TextStyle(
+                                                  fontSize: 28,
+                                                  fontWeight: FontWeight.bold,
+                                                ),
+                                              ),
+
+                                              const Spacer(),
+                                            ],
+                                          ),
+                                          CalendarWidget(),
+                                          Spacer(),
+                                          Container(
+                                            padding: EdgeInsets.all(15),
+                                            width: double.infinity,
+                                            height: 150,
+                                            decoration: BoxDecoration(
+                                              color: Colors.white,
+                                              borderRadius: BorderRadius.only(
+                                                topRight: Radius.circular(30),
+                                                topLeft: Radius.circular(30),
+                                              ),
+                                            ),
+                                            child: Column(
+                                              children: [
+                                                Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.start,
+                                                  crossAxisAlignment: .start,
+                                                  children: [
+                                                    Text(
+                                                      "June 2021 : 4 Days",
+                                                      style: GoogleFonts.ubuntu(
+                                                        fontSize: 24,
+                                                        fontWeight: FontWeight(600),
+                                                      ),
+                                                    ),
+                                                    TextButton(
+                                                      onPressed: () {},
+                                                      child: Text(
+                                                        "Clear Date",
+                                                        style: GoogleFonts.ubuntu(
+                                                          color: Colors.red,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                                Spacer(),
+                                                SizedBox(
+                                                  width: double.infinity,
+                                                  height: 60,
+                                                  child: ElevatedButton(
+                                                    style: ElevatedButton.styleFrom(
+                                                      backgroundColor: Colors.blue,
+                                                      foregroundColor: Colors.white,
+                                                    ),
+                                                    onPressed: () {},
+                                                    child: Text(
+                                                      "Next",
+                                                      style: GoogleFonts.ubuntu(
+                                                        fontSize: 18,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    );
+                                  },
+                                );
                               },
                               child: Container(
                                 padding: const EdgeInsets.symmetric(
@@ -228,27 +348,50 @@ class TravelDetailsPage extends StatelessWidget {
                             fontSize: 24,
                             fontWeight: FontWeight.bold,
                           ),
-                        ),SizedBox(height: 20),
+                        ),
+                        SizedBox(height: 20),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            GestureDetector(onTap: () {
-                              showModalBottomSheet(context: context,
-                                isScrollControlled: true,
-                                backgroundColor: Colors.transparent, builder: (context) {
-                                return const FlightDetailsBottomSheet();
-                                },
-                              );},child: includeItem(Icons.flight, "Flight"),),
-                            GestureDetector(onTap: (){},child: includeItem(Icons.directions_car, "Transfer"),),
-                            GestureDetector(onTap: (){},child: includeItem(Icons.hotel, "Hotel"),),
-                            GestureDetector(onTap: (){},child: includeItem(Icons.restaurant, "Food"),)
+                            GestureDetector(
+                              onTap: () {
+                                showModalBottomSheet(
+                                  context: context,
+                                  isScrollControlled: true,
+                                  backgroundColor: Colors.transparent,
+                                  builder: (context) {
+                                    return const FlightDetailsBottomSheet();
+                                  },
+                                );
+                              },
+                              child: includeItem(Icons.flight, "Flight"),
+                            ),
+                            GestureDetector(
+                              onTap: () {},
+                              child: includeItem(
+                                Icons.directions_car,
+                                "Transfer",
+                              ),
+                            ),
+                            GestureDetector(
+                              onTap: () {},
+                              child: includeItem(Icons.hotel, "Hotel"),
+                            ),
+                            GestureDetector(
+                              onTap: () {},
+                              child: includeItem(Icons.restaurant, "Food"),
+                            ),
                           ],
                         ),
                         SizedBox(height: 40),
-                        Text("Image and Videos",style: TextStyle(fontWeight: FontWeight.bold,
-                        fontSize: 24
-                        ),),
-                        SizedBox(height: 20,),
+                        Text(
+                          "Image and Videos",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 24,
+                          ),
+                        ),
+                        SizedBox(height: 20),
                         Row(
                           children: [
                             Expanded(
@@ -256,7 +399,6 @@ class TravelDetailsPage extends StatelessWidget {
                               child: Stack(
                                 alignment: Alignment.center,
                                 children: [
-
                                   Container(
                                     clipBehavior: Clip.antiAlias,
                                     height: 180,
@@ -264,7 +406,10 @@ class TravelDetailsPage extends StatelessWidget {
                                       borderRadius: BorderRadius.circular(20),
                                       color: Colors.grey.shade300,
                                     ),
-                                    child: Image.asset("assets/image/img_11.png",fit: BoxFit.cover,),
+                                    child: Image.asset(
+                                      "assets/image/img_11.png",
+                                      fit: BoxFit.cover,
+                                    ),
                                   ),
                                 ],
                               ),
@@ -273,7 +418,6 @@ class TravelDetailsPage extends StatelessWidget {
                             Expanded(
                               child: Column(
                                 children: [
-
                                   Container(
                                     clipBehavior: Clip.antiAlias,
                                     height: 82,
@@ -281,23 +425,30 @@ class TravelDetailsPage extends StatelessWidget {
                                       borderRadius: BorderRadius.circular(20),
                                       color: Colors.grey.shade300,
                                     ),
-                                    child: Image.asset("assets/image/img_10.png",fit: BoxFit.cover,),
+                                    child: Image.asset(
+                                      "assets/image/img_10.png",
+                                      fit: BoxFit.cover,
+                                    ),
                                   ),
 
                                   const SizedBox(height: 15),
 
                                   Row(
                                     children: [
-
                                       Expanded(
                                         child: Container(
                                           clipBehavior: Clip.antiAlias,
                                           height: 82,
                                           decoration: BoxDecoration(
-                                            borderRadius: BorderRadius.circular(20),
+                                            borderRadius: BorderRadius.circular(
+                                              20,
+                                            ),
                                             color: Colors.grey.shade300,
                                           ),
-                                          child: Image.asset("assets/image/img_9.png",fit: BoxFit.cover,),
+                                          child: Image.asset(
+                                            "assets/image/img_9.png",
+                                            fit: BoxFit.cover,
+                                          ),
                                         ),
                                       ),
                                       SizedBox(width: 10),
@@ -307,10 +458,15 @@ class TravelDetailsPage extends StatelessWidget {
                                           clipBehavior: Clip.antiAlias,
                                           height: 82,
                                           decoration: BoxDecoration(
-                                            borderRadius: BorderRadius.circular(20),
+                                            borderRadius: BorderRadius.circular(
+                                              20,
+                                            ),
                                             color: Colors.grey.shade300,
                                           ),
-                                          child: Image.asset("assets/image/img_7.png",fit: BoxFit.cover,),
+                                          child: Image.asset(
+                                            "assets/image/img_7.png",
+                                            fit: BoxFit.cover,
+                                          ),
                                         ),
                                       ),
                                     ],
@@ -320,21 +476,22 @@ class TravelDetailsPage extends StatelessWidget {
                             ),
                           ],
                         ),
-                        SizedBox(height: 20,),
+                        SizedBox(height: 20),
                         SizedBox(
                           width: double.infinity,
                           height: 60,
                           child: ElevatedButton(
                             style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.blue.shade100
+                              backgroundColor: Colors.blue.shade100,
                             ),
                             onPressed: () {},
-                            child: const Text("See all 156 Photo",style: TextStyle(
-                              color: Colors.indigo
-                            ),),
+                            child: const Text(
+                              "See all 156 Photo",
+                              style: TextStyle(color: Colors.indigo),
+                            ),
                           ),
                         ),
-                        SizedBox(height: 100,)
+                        SizedBox(height: 100),
                       ],
                     ),
                   ),
@@ -345,23 +502,27 @@ class TravelDetailsPage extends StatelessWidget {
           SafeArea(
             child: Padding(
               padding: const EdgeInsets.all(20),
-              child: GestureDetector(onTap: (){
-                Navigator.pop(context);
-              },child: Container(
-                height: 50,
-                width: 50,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(15),
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.pop(context);
+                },
+                child: Container(
+                  height: 50,
+                  width: 50,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  child: const Icon(Icons.arrow_back),
                 ),
-                child: const Icon(Icons.arrow_back),
-              ),)
+              ),
             ),
           ),
         ],
       ),
     );
   }
+
   static Widget includeItem(IconData icon, String title) {
     return Column(
       children: [
@@ -390,9 +551,7 @@ class FlightDetailsBottomSheet extends StatelessWidget {
       height: MediaQuery.of(context).size.height * .8,
       decoration: const BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.vertical(
-          top: Radius.circular(40),
-        ),
+        borderRadius: BorderRadius.vertical(top: Radius.circular(40)),
       ),
       child: Padding(
         padding: EdgeInsets.all(20),
@@ -400,28 +559,24 @@ class FlightDetailsBottomSheet extends StatelessWidget {
           children: [
             Row(
               children: [
-                GestureDetector(onTap: (){
-                  Navigator.pop(context);
-                },child:
-                Container(
-                  height: 40,
-                  width: 40,
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: Colors.grey.shade300,
+                GestureDetector(
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                  child: Container(
+                    height: 40,
+                    width: 40,
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.grey.shade300),
+                      borderRadius: BorderRadius.circular(12),
                     ),
-                    borderRadius:
-                    BorderRadius.circular(12),
+                    child: const Icon(Icons.close),
                   ),
-                  child: const Icon(Icons.close),
-                ),),
+                ),
                 Spacer(),
                 Text(
                   "Flight Details",
-                  style: TextStyle(
-                    fontSize: 28,
-                    fontWeight: FontWeight.bold,
-                  ),
+                  style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
                 ),
 
                 const Spacer(),
@@ -435,42 +590,31 @@ class FlightDetailsBottomSheet extends StatelessWidget {
                 itemCount: 5,
                 itemBuilder: (context, index) {
                   return Container(
-                    margin:
-                    const EdgeInsets.only(bottom: 20),
+                    margin: const EdgeInsets.only(bottom: 20),
                     padding: const EdgeInsets.all(20),
                     decoration: BoxDecoration(
                       color: Colors.white,
-                      borderRadius:
-                      BorderRadius.circular(25),
+                      borderRadius: BorderRadius.circular(25),
                       boxShadow: const [
-                        BoxShadow(
-                          color: Colors.black12,
-                          blurRadius: 10,
-                        )
+                        BoxShadow(color: Colors.black12, blurRadius: 10),
                       ],
                     ),
                     child: Column(
                       children: [
-
                         Row(
                           children: [
-
                             const Text(
                               "NYC",
                               style: TextStyle(
                                 color: Colors.orange,
                                 fontSize: 24,
-                                fontWeight:
-                                FontWeight.bold,
+                                fontWeight: FontWeight.bold,
                               ),
                             ),
 
                             const Spacer(),
 
-                            const Icon(
-                              Icons.flight,
-                              color: Colors.blue,
-                            ),
+                            const Icon(Icons.flight, color: Colors.blue),
 
                             const Spacer(),
 
@@ -479,8 +623,7 @@ class FlightDetailsBottomSheet extends StatelessWidget {
                               style: TextStyle(
                                 color: Colors.deepPurple,
                                 fontSize: 24,
-                                fontWeight:
-                                FontWeight.bold,
+                                fontWeight: FontWeight.bold,
                               ),
                             ),
                           ],
@@ -494,10 +637,7 @@ class FlightDetailsBottomSheet extends StatelessWidget {
                             Spacer(),
                             Text(
                               "06h 30m",
-                              style: TextStyle(
-                                fontWeight:
-                                FontWeight.bold,
-                              ),
+                              style: TextStyle(fontWeight: FontWeight.bold),
                             ),
                             Spacer(),
                             Text("Singapore"),
@@ -512,8 +652,7 @@ class FlightDetailsBottomSheet extends StatelessWidget {
                               "19:00",
                               style: TextStyle(
                                 fontSize: 24,
-                                fontWeight:
-                                FontWeight.bold,
+                                fontWeight: FontWeight.bold,
                               ),
                             ),
                             Spacer(),
@@ -521,8 +660,7 @@ class FlightDetailsBottomSheet extends StatelessWidget {
                               "01:30",
                               style: TextStyle(
                                 fontSize: 24,
-                                fontWeight:
-                                FontWeight.bold,
+                                fontWeight: FontWeight.bold,
                               ),
                             ),
                           ],
@@ -536,7 +674,6 @@ class FlightDetailsBottomSheet extends StatelessWidget {
 
                         Row(
                           children: [
-
                             Container(
                               height: 55,
                               width: 55,
@@ -555,8 +692,7 @@ class FlightDetailsBottomSheet extends StatelessWidget {
                                 "American Airlines",
                                 style: TextStyle(
                                   fontSize: 20,
-                                  fontWeight:
-                                  FontWeight.w500,
+                                  fontWeight: FontWeight.w500,
                                 ),
                               ),
                             ),
@@ -565,8 +701,7 @@ class FlightDetailsBottomSheet extends StatelessWidget {
                               "\$160",
                               style: TextStyle(
                                 fontSize: 26,
-                                fontWeight:
-                                FontWeight.bold,
+                                fontWeight: FontWeight.bold,
                               ),
                             ),
                           ],

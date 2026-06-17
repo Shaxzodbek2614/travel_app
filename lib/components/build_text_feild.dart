@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:travel_app/themes/app_colors.dart';
 class BuildTextFeild extends StatelessWidget {
   TextEditingController? controller;
   String hintText;
@@ -24,18 +25,14 @@ class BuildTextFeild extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      decoration: InputDecoration(
+        prefixIcon: Icon(prefixIcons,color: AppColors.of(context).textColor,),
+        hintText: hintText,
+        suffixIcon: IconButton(onPressed: onPressed, icon: Icon(suffixIcon, color: AppColors.of(context).textColor,)),
+      
+      ),
       controller: controller,
       obscureText: obsureText,
-      decoration: InputDecoration(
-          enabledBorder: OutlineInputBorder(borderRadius: .circular(30),borderSide: BorderSide(color: Colors.grey)),
-          focusedBorder: OutlineInputBorder(borderRadius: .circular(30),borderSide: BorderSide(color: Colors.black)),
-          errorBorder: OutlineInputBorder(borderRadius: .circular(30),borderSide: BorderSide(color: Colors.red)),
-          focusedErrorBorder: OutlineInputBorder(borderRadius: .circular(30),borderSide: BorderSide(color: Colors.red)),
-          prefixIcon: Icon(prefixIcons,color: Colors.grey,),
-          hintText: hintText,
-          hintStyle: TextStyle(color: Colors.grey),
-        suffixIcon: IconButton(onPressed: onPressed, icon: Icon(suffixIcon,color: Colors.grey,)),
-      ),
       validator: (value){
         if(value==null || value.isEmpty){
           return type=="email" ?"Email bo'sh bo'lishi mumkin emas": "Password bo'sh bo'lishi mumkin emas";

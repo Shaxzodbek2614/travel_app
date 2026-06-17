@@ -2,6 +2,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:travel_app/pages/register/vertification_page.dart';
+import 'package:travel_app/themes/app_colors.dart';
 
 import '../../components/build_signin_button.dart';
 import '../../components/build_text_feild.dart';
@@ -43,14 +44,14 @@ class _SignUpPageState extends State<SignUpPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: AppColors.of(context).backgroundColor,
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: AppColors.of(context).backgroundColor,
         title: Text(
-          "Sign In",
+          "Sign Up",
           style: GoogleFonts.elmsSans(
             fontWeight: FontWeight.bold,
-            color: Colors.black,
+            color: AppColors.of(context).titleColor,
           ),
         ),
         centerTitle: true,
@@ -70,7 +71,7 @@ class _SignUpPageState extends State<SignUpPage> {
                     "TRALTO",
                     style: GoogleFonts.elmsSans(
                       fontSize: 22,
-                      color: Colors.black,
+                      color: AppColors.of(context).titleColor,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -79,7 +80,7 @@ class _SignUpPageState extends State<SignUpPage> {
               SizedBox(height: 10),
               Text(
                 "Give credentials to sign in your account",
-                style: TextStyle(color: Colors.grey),
+                style: TextStyle(color: AppColors.of(context).textColor),
               ),
               SizedBox(height: 15),
               Form(
@@ -92,7 +93,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       child: Text(
                         "Full Name",
                         style: TextStyle(
-                          color: Colors.black,
+                          color: AppColors.of(context).titleColor,
                           fontWeight: FontWeight.bold,
                           fontSize: 17,
                         ),
@@ -110,7 +111,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       child: Text(
                         "Email",
                         style: TextStyle(
-                          color: Colors.black,
+                          color: AppColors.of(context).titleColor,
                           fontWeight: FontWeight.bold,
                           fontSize: 17,
                         ),
@@ -128,7 +129,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       child: Text(
                         "Password",
                         style: TextStyle(
-                          color: Colors.black,
+                          color: AppColors.of(context).titleColor,
                           fontWeight: FontWeight.bold,
                           fontSize: 17,
                         ),
@@ -145,6 +146,7 @@ class _SignUpPageState extends State<SignUpPage> {
                           ? Icons.visibility
                           : Icons.visibility_off,
                       obsureText: isVisible ? false : true,
+                    
                       onPressed: () {
                         setState(() {
                           isVisible = (isVisible == false) ? true : false;
@@ -157,7 +159,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       child: Text(
                         "Confirm Password",
                         style: TextStyle(
-                          color: Colors.black,
+                          color: AppColors.of(context).titleColor,
                           fontWeight: FontWeight.bold,
                           fontSize: 17,
                         ),
@@ -188,12 +190,7 @@ class _SignUpPageState extends State<SignUpPage> {
                         Navigator.push(context, MaterialPageRoute(builder: (context)=>VertificationPage(email: emailController.text,type: "signup",)));
 
                       },
-                      child: Text("Sign In"),
-                      style: ElevatedButton.styleFrom(
-                        minimumSize: Size(double.infinity, 50),
-                        foregroundColor: Colors.white,
-                        backgroundColor: Colors.blue,
-                      ),
+                      child: Text("Sign Up"),
                     ),
                     SizedBox(height: 30,),
                     Row(
@@ -217,7 +214,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       children: [
                         BuildSignInButton(icon: Icons.facebook, onPressed: (){},color: Colors.blue,),
                         BuildSignInButton(image: Image.asset("assets/images/img_1.png",width: 20,), onPressed: (){},color: Colors.blue,),
-                        BuildSignInButton(icon: Icons.apple, onPressed: (){},color: Colors.black,),
+                        BuildSignInButton(icon: Icons.apple, onPressed: (){},color: AppColors.of(context).titleColor,),
                       ],
                     ),
         
@@ -226,7 +223,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       child: RichText(
                           textAlign: TextAlign.center,
                           text: TextSpan(
-                              style: GoogleFonts.elmsSans(color: Colors.black,fontSize: 20),
+                              style: GoogleFonts.elmsSans(color: AppColors.of(context).titleColor,fontSize: 20),
                               children: [
         
                                 TextSpan(
@@ -234,7 +231,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                 ),
                                 TextSpan(
                                     text: "Sign In",
-                                    style: TextStyle(color: Colors.orange),
+                                    style: TextStyle(color: AppColors.of(context).signText),
                                     recognizer: TapGestureRecognizer()..onTap = (){}
                                 ),
         

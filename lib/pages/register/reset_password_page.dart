@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:travel_app/pages/register/set_new_password_page.dart';
 import 'package:travel_app/pages/register/vertification_page.dart';
+import 'package:travel_app/themes/app_colors.dart';
 
 import '../../components/build_text_feild.dart';
 
@@ -33,14 +34,14 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: true,
-      backgroundColor: Colors.white,
+      backgroundColor: AppColors.of(context).backgroundColor,
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: AppColors.of(context).backgroundColor,
         title: Text(
           "Security",
           style: GoogleFonts.elmsSans(
             fontWeight: FontWeight.bold,
-            color: Colors.black,
+            color: AppColors.of(context).titleColor,
           ),
         ),
         centerTitle: true,
@@ -56,7 +57,7 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
                   "Reset Password",
                   style: GoogleFonts.elmsSans(
                     fontSize: 22,
-                    color: Colors.black,
+                    color: AppColors.of(context).titleColor,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -65,7 +66,7 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
             SizedBox(height: 10),
             Text(
               "Please enter your email address to request a password reset",
-              style: TextStyle(color: Colors.grey),
+              style: TextStyle(color: AppColors.of(context).textColor),
             ),
             SizedBox(height: 40),
             Padding(
@@ -73,7 +74,7 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
               child: Text(
                 "Email",
                 style: TextStyle(
-                  color: Colors.black,
+                  color: AppColors.of(context).titleColor,
                   fontWeight: FontWeight.bold,
                   fontSize: 17,
                 ),
@@ -91,11 +92,6 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
                 Navigator.push(context, MaterialPageRoute(builder: (context)=>VertificationPage(email: emailController.text,type: "reset",)));
               },
               child: Text("Continue"),
-              style: ElevatedButton.styleFrom(
-                minimumSize: Size(double.infinity, 50),
-                foregroundColor: Colors.white,
-                backgroundColor: Colors.blue,
-              ),
             ),
           ],
         ),
