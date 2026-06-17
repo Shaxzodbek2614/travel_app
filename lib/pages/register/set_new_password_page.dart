@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:travel_app/themes/app_colors.dart';
 
 import '../../components/build_text_feild.dart';
 
@@ -42,14 +43,14 @@ class _SetNewPasswordPageState extends State<SetNewPasswordPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: true,
-      backgroundColor: Colors.white,
+      backgroundColor: AppColors.of(context).backgroundColor,
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: AppColors.of(context).backgroundColor,
         title: Text(
           "Security",
           style: GoogleFonts.elmsSans(
             fontWeight: FontWeight.bold,
-            color: Colors.black,
+            color: AppColors.of(context).titleColor,
           ),
         ),
         centerTitle: true,
@@ -65,7 +66,7 @@ class _SetNewPasswordPageState extends State<SetNewPasswordPage> {
                   "New Password",
                   style: GoogleFonts.elmsSans(
                     fontSize: 22,
-                    color: Colors.black,
+                    color: AppColors.of(context).titleColor,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -74,7 +75,7 @@ class _SetNewPasswordPageState extends State<SetNewPasswordPage> {
             SizedBox(height: 10),
             Text(
               "Your password must  different from your previous password",
-              style: TextStyle(color: Colors.grey),
+              style: TextStyle(color: AppColors.of(context).textColor),
             ),
             SizedBox(height: 40),
             SizedBox(height: 10),
@@ -88,7 +89,7 @@ class _SetNewPasswordPageState extends State<SetNewPasswordPage> {
                   child: Text(
                     "Password",
                     style: TextStyle(
-                      color: Colors.black,
+                      color: AppColors.of(context).titleColor,
                       fontWeight: FontWeight.bold,
                       fontSize: 17,
                     ),
@@ -117,7 +118,7 @@ class _SetNewPasswordPageState extends State<SetNewPasswordPage> {
                   child: Text(
                     "Confirm Password",
                     style: TextStyle(
-                      color: Colors.black,
+                      color: AppColors.of(context).titleColor,
                       fontWeight: FontWeight.bold,
                       fontSize: 17,
                     ),
@@ -150,11 +151,6 @@ class _SetNewPasswordPageState extends State<SetNewPasswordPage> {
                 }
               },
               child: Text("Continue"),
-              style: ElevatedButton.styleFrom(
-                minimumSize: Size(double.infinity, 50),
-                foregroundColor: Colors.white,
-                backgroundColor: Colors.blue,
-              ),
             ),
           ],
         ),

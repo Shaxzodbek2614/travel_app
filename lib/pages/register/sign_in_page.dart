@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:travel_app/pages/register/reset_password_page.dart';
 import 'package:travel_app/pages/register/sign_up_page.dart';
+import 'package:travel_app/themes/app_colors.dart';
 
 import '../../components/build_signin_button.dart';
 import '../../components/build_text_feild.dart';
@@ -20,14 +21,14 @@ class _SignInPageState extends State<SignInPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: AppColors.of(context).backgroundColor,
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: AppColors.of(context).backgroundColor,
         title: Text(
           "Sign In",
           style: GoogleFonts.elmsSans(
             fontWeight: FontWeight.bold,
-            color: Colors.black,
+            color: AppColors.of(context).textColor,
           ),
         ),
         centerTitle: true,
@@ -46,7 +47,7 @@ class _SignInPageState extends State<SignInPage> {
                   "TRALTO",
                   style: GoogleFonts.elmsSans(
                     fontSize: 22,
-                    color: Colors.black,
+                    color: AppColors.of(context).titleColor,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -55,7 +56,7 @@ class _SignInPageState extends State<SignInPage> {
             SizedBox(height: 10),
             Text(
               "Give credentials to sign in your account",
-              style: TextStyle(color: Colors.grey),
+              style: TextStyle(color: AppColors.of(context).textColor),
             ),
             SizedBox(height: 15),
             Form(
@@ -68,7 +69,7 @@ class _SignInPageState extends State<SignInPage> {
                     child: Text(
                       "Email",
                       style: TextStyle(
-                        color: Colors.black,
+                        color: AppColors.of(context).titleColor,
                         fontWeight: FontWeight.bold,
                         fontSize: 17,
                       ),
@@ -85,7 +86,7 @@ class _SignInPageState extends State<SignInPage> {
                     child: Text(
                       "Password",
                       style: TextStyle(
-                        color: Colors.black,
+                        color: AppColors.of(context).titleColor,
                         fontWeight: FontWeight.bold,
                         fontSize: 17,
                       ),
@@ -116,7 +117,7 @@ class _SignInPageState extends State<SignInPage> {
                         },
                         child: Text(
                           "Forgot Password?",
-                          style: TextStyle(color: Colors.blue),
+                          style: TextStyle(color: AppColors.of(context).forgotPasswordText),
                         ),
                       ),
                     ],
@@ -127,11 +128,6 @@ class _SignInPageState extends State<SignInPage> {
                       if(globalKey.currentState!.validate()){}
                     },
                     child: Text("Sign In"),
-                    style: ElevatedButton.styleFrom(
-                      minimumSize: Size(double.infinity, 50),
-                      foregroundColor: Colors.white,
-                      backgroundColor: Colors.blue,
-                    ),
                   ),
                   SizedBox(height: 30,),
                   Row(
@@ -155,7 +151,7 @@ class _SignInPageState extends State<SignInPage> {
                     children: [
                       BuildSignInButton(icon: Icons.facebook, onPressed: (){},color: Colors.blue,),
                       BuildSignInButton(image: Image.asset("assets/images/img_1.png",width: 20,), onPressed: (){},color: Colors.blue,),
-                      BuildSignInButton(icon: Icons.apple, onPressed: (){},color: Colors.black,),
+                      BuildSignInButton(icon: Icons.apple, onPressed: (){},color: AppColors.of(context).titleColor,),
                     ],
                   ),
 
@@ -164,7 +160,7 @@ class _SignInPageState extends State<SignInPage> {
                     child: RichText(
                       textAlign: TextAlign.center,
                         text: TextSpan(
-                          style: GoogleFonts.elmsSans(color: Colors.black,fontSize: 20),
+                          style: GoogleFonts.elmsSans(color: AppColors.of(context).titleColor,fontSize: 20),
                       children: [
 
                         TextSpan(
@@ -172,7 +168,7 @@ class _SignInPageState extends State<SignInPage> {
                         ),
                         TextSpan(
                             text: "Sign Up",
-                          style: TextStyle(color: Colors.orange),
+                          style: TextStyle(color: AppColors.of(context).signText),
                           recognizer: TapGestureRecognizer()..onTap = (){
                               Navigator.push(context,MaterialPageRoute(builder: (context)=>SignUpPage()));
                           }
